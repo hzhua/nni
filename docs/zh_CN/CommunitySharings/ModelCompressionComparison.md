@@ -6,7 +6,7 @@
 
 实验使用以下剪枝器/数据集/模型进行:
 
-* 模型：[VGG16, ResNet18, ResNet50](https://github.com/microsoft/nni/tree/master/examples/model_compress/models/cifar10)
+* Models: [VGG16, ResNet18, ResNet50](https://github.com/microsoft/nni/tree/v1.9/examples/model_compress/models/cifar10)
 
 * 数据集：CIFAR-10
 
@@ -18,7 +18,7 @@
 
     对于迭代式剪枝器，使用 `L1Filter Pruner` 作为基础算法。 也就是说, 在迭代式剪枝器决定了稀疏度分布之后，使用 `L1Filter Pruner` 进行真正的剪枝。
 
-    - 上面列出来的所有的剪枝器都已经在 [NNI](https://github.com/microsoft/nni/tree/master/docs/zh_CN/Compressor/Overview.md) 中实现。
+    - All the pruners listed above are implemented in [nni](https://github.com/microsoft/nni/tree/v1.9/docs/en_US/Compression/Overview.md).
 
 ## 实验结果
 
@@ -54,13 +54,13 @@ CIFAR-10, ResNet50:
 
 * 实验结果都是在 NNI 中使用剪枝器的默认配置收集的，这意味着当我们在 NNI 中调用一个剪枝器类时，我们不会更改任何默认的类参数。
 
-* FLOPs 和 参数数量均通过 [模型 FLOPs 和参数计数器](https://github.com/microsoft/nni/blob/master/docs/zh_CN/Compressor/CompressionUtils.md#model-flopsparameters-counter)在[模型加速](https://github.com/microsoft/nni/blob/master/docs/zh_CN/Compressor/ModelSpeedup.md)后计算。 这避免了依据掩码模型计算的潜在问题。
+* Both FLOPs and the number of parameters are counted with [Model FLOPs/Parameters Counter](https://github.com/microsoft/nni/tree/v1.9/docs/en_US/Compression/CompressionUtils.md#model-flopsparameters-counter) after [model speed up](https://github.com/microsoft/nni/tree/v1.9/docs/en_US/Compression/ModelSpeedup.md). 这避免了依据掩码模型计算的潜在问题。
 
-* 实验代码在[这里](https://github.com/microsoft/nni/tree/master/examples/model_compress/auto_pruners_torch.py)。
+* The experiment code can be found [here](https://github.com/microsoft/nni/tree/v1.9/examples/model_compress/auto_pruners_torch.py).
 
 ### 实验结果展示
 
-* 如果遵循[示例](https://github.com/microsoft/nni/tree/master/examples/model_compress/auto_pruners_torch.py)的做法，对于每一次剪枝实验，实验结果将以JSON格式保存如下：
+* If you follow the practice in the [example](https://github.com/microsoft/nni/tree/v1.9/examples/model_compress/auto_pruners_torch.py), for every single pruning experiment, the experiment result will be saved in JSON format as follows:
     ``` json
     {
         "performance": {"original": 0.9298, "pruned": 0.1, "speedup": 0.1, "finetuned": 0.7746}, 
@@ -69,7 +69,7 @@ CIFAR-10, ResNet50:
     }
     ```
 
-* 实验结果保存在[这里](https://github.com/microsoft/nni/tree/master/examples/model_compress/comparison_of_pruners)。 可以参考[分析](https://github.com/microsoft/nni/blob/master/examples/model_compress/comparison_of_pruners/analyze.py)来绘制新的性能比较图。
+* The experiment results are saved [here](https://github.com/microsoft/nni/tree/v1.9/examples/model_compress/comparison_of_pruners). You can refer to [analyze](https://github.com/microsoft/nni/tree/v1.9/examples/model_compress/comparison_of_pruners/analyze.py) to plot new performance comparison figures.
 
 ## 贡献
 

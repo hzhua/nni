@@ -8,7 +8,7 @@
 
 这些 Selector 适用于结构化的数据（也就是不适用于图像，语音和文本数据）。
 
-另外，Selector 仅用于特征选择。 如果需要： 1) 在特征选择时，通过 NNI 生成高阶的组合特征； 2) 使用分布式资源； 可以尝试[本示例](https://github.com/microsoft/nni/tree/master/examples/feature_engineering/auto-feature-engineering)。
+另外，Selector 仅用于特征选择。 If you want to: 1) generate high-order combined features on nni while doing feature selection; 2) leverage your distributed resources; you could try this [example](https://github.com/microsoft/nni/tree/v1.9/examples/feature_engineering/auto-feature-engineering).
 
 ## 如何使用
 
@@ -98,7 +98,7 @@ class CustomizedSelector(FeatureSelector):
 
 **3. 与 sklearn 集成**
 
-`sklearn.pipeline.Pipeline` 可将模型连接在一起，例如特征选择，规范化，以及分类、回归，来组成一个典型的机器学习问题工作流。 下列步骤可帮助集成 sklearn，将定制的特征 Selector 作为管道的模块。
+`sklearn.pipeline.Pipeline` 可将模型连接在一起，例如特征选择，规范化，以及分类、回归，来组成一个典型的机器学习问题工作流。 The following step could help us to better integrate with sklearn, which means we could treat the customized feature selector as a module of the pipeline.
 
 1. 继承类 _sklearn.base.BaseEstimator_
 1. 实现 _BaseEstimator_ 中的 _get_params_ 和 _set_params_ 函数
@@ -261,6 +261,6 @@ print("Pipeline Score: ", pipeline.score(X_train, y_train))
 ## 参考和反馈
 * 在 GitHub 中[提交此功能的 Bug](https://github.com/microsoft/nni/issues/new?template=bug-report.md)；
 * 在 GitHub 中[提交新功能或改进请求](https://github.com/microsoft/nni/issues/new?template=enhancement.md)；
-* 了解 NNI 中[神经网络结构搜索的更多信息](https://github.com/microsoft/nni/blob/master/docs/zh_CN/NAS/Overview.md)；
-* 了解 NNI 中[模型自动压缩的更多信息](https://github.com/microsoft/nni/blob/master/docs/zh_CN/Compressor/Overview.md)；
-* 了解如何[使用 NNI 进行超参数调优](https://github.com/microsoft/nni/blob/master/docs/zh_CN/Tuner/BuiltinTuner.md)；
+* To know more about [Neural Architecture Search with NNI](https://github.com/microsoft/nni/blob/v1.9/docs/en_US/NAS/Overview.md);
+* To know more about [Model Compression with NNI](https://github.com/microsoft/nni/blob/v1.9/docs/en_US/Compression/Overview.md);
+* To know more about [Hyperparameter Tuning with NNI](https://github.com/microsoft/nni/blob/v1.9/docs/en_US/Tuner/BuiltinTuner.md);

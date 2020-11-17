@@ -1,32 +1,32 @@
-# Web 界面
+# WebUI
 
-## 查看概要页面
+## View summary page
 
-点击标签 "Overview"。
+Click the tab "Overview".
 
-* 查看 Experiment 参数。
-* 查看最好结果的 Trial。
-* 查看搜索空间 JSON 文件。
+* See the experiment parameters.
+* See good performance trial.
+* See search_space json.
 
-## 查看任务准确度
+## View job accuracy
 
-点击 "Default Metric" 来查看所有 Trial 的点图。 将鼠标悬停到某个点查看其准确度。
+Click the tab "Default Metric" to see the point graph of all trials. Hover every point to see its specific accuracy.
 
-## 查看超参
+## View hyper parameter
 
-点击 "Hyper Parameter" 标签查看图像。
+Click the tab "Hyper Parameter" to see the parallel graph.
 
-* 可选择百分比查看最好的 Trial。
-* 选择两个轴来交换位置。
+* You can select the percentage to see top trials.
+* Choose two axis to swap its positions
 
-## 查看 Trial 状态
+## View trial status
 
-点击 "Trials Detail" 标签查看所有 Trial 的状态。 特别是：
+Click the tab "Trials Detail" to see the status of the all trials. Specifically:
 
-* Trial duration：Trial 执行时间的条形图。
-* Trial 详情：Trial 的 id，持续时间，开始时间，结束时间，状态，精度和搜索空间。
-* Kill: 可终止正在运行的任务。
+* Trial duration: trial's duration in the bar graph.
+* Trial detail: trial's id, trial's duration, start time, end time, status, accuracy and search space file.
+* Kill: you can kill a job that status is running.
 
-## 反馈
+## Feedback
 
-[已知问题](https://github.com/Microsoft/nni/issues)
+[Known Issues](https://github.com/Microsoft/nni/issues).

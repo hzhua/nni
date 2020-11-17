@@ -9,25 +9,25 @@
 每个 One-Shot NAS 算法都实现了 Trainer，可在每种算法说明中找到详细信息。 这是如何使用 `EnasTrainer` 的简单示例。
 
 ```python
-# 此处与普通模型训练相同
+# this is exactly same as traditional model training
 model = Net()
 dataset_train = CIFAR10(root="./data", train=True, download=True, transform=train_transform)
 dataset_valid = CIFAR10(root="./data", train=False, download=True, transform=valid_transform)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), 0.05, momentum=0.9, weight_decay=1.0E-4)
 
-# 使用 NAS
+# use NAS here
 def top1_accuracy(output, target):
-    # ENAS 使用此函数来计算奖励
+    # this is the function that computes the reward, as required by ENAS algorithm
     batch_size = target.size(0)
     _, predicted = torch.max(output.data, 1)
     return (predicted == target).sum().item() / batch_size
 
 def metrics_fn(output, target):
-    # 指标函数接收输出和目标，并计算出指标 dict
+    # metrics function receives output and target and computes a dict of metrics
     return {"acc1": top1_accuracy(output, target)}
 
-from nni.nas.pytorch import enas
+from nni.algorithms.nas.pytorch import enas
 trainer = enas.EnasTrainer(model,
                            loss=criterion,
                            metrics=metrics_fn,
@@ -37,9 +37,9 @@ trainer = enas.EnasTrainer(model,
                            num_epochs=10,  # 10 epochs
                            dataset_train=dataset_train,
                            dataset_valid=dataset_valid,
-                           log_frequency=10)  # 每 10 步打印
-trainer.train()  # 训练
-trainer.export(file="model_dir/final_architecture.json")  # 将最终架构导出到文件
+                           log_frequency=10)  # print log every 10 steps
+trainer.train()  # training
+trainer.export(file="model_dir/final_architecture.json")  # export the final architecture to file
 ```
 
 `model` 是一个[用户定义的搜索空间](./WriteSearchSpace.md)。 然后需要准备搜索数据和模型评估指标。 要从定义的搜索空间中进行搜索，需要实例化 One-Shot 算法，即 Trainer（如，EnasTrainer）。 Trainer 会提供一些可以自定义的参数。 如，损失函数，指标函数，优化器以及数据集。 这些功能可满足大部分需求，NNI 会尽力让内置 Trainer 能够处理更多的模型、任务和数据集。

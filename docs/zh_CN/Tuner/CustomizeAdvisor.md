@@ -9,14 +9,14 @@ Advisor 用于同时需要 Tuner 和 Assessor 方法的自动机器学习算法�
 **1. 定义从 MsgDispatcherBase 类继承的 Advisor。** 如：
 
 ```python
-from nni.msg_dispatcher_base import MsgDispatcherBase
+from nni.runtime.msg_dispatcher_base import MsgDispatcherBase
 
 class CustomizedAdvisor(MsgDispatcherBase):
     def __init__(self, ...):
         ...
 ```
 
-**2. 实现所有除了 `handle_request` 外的，以 `handle_` 前缀开始的方法**。 [此文档](https://nni.readthedocs.io/zh/latest/sdk_reference.html#nni.msg_dispatcher_base.MsgDispatcherBase)可帮助理解 `MsgDispatcherBase`。
+**2. 实现所有除了 `handle_request` 外的，以 `handle_` 前缀开始的方法**。 You might find [docs](https://nni.readthedocs.io/en/latest/sdk_reference.html#nni.runtime.msg_dispatcher_base.MsgDispatcherBase) for `MsgDispatcherBase` helpful.
 
 **3. 在 Experiment 的 YAML 文件中配置好自定义的 Advisor。**
 
@@ -37,4 +37,4 @@ advisor:
 
 ## 示例
 
-参考[示例](https://github.com/microsoft/nni/tree/master/examples/tuners/mnist_keras_customized_advisor)。
+Here we provide an [example](https://github.com/microsoft/nni/tree/v1.9/examples/tuners/mnist_keras_customized_advisor).

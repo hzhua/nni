@@ -10,7 +10,7 @@ NNI 基于官方的 [Tensorflow](https://github.com/melodyguan/enas) 实现，�
 
 ### CIFAR10 Macro/Micro 搜索空间
 
-[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/enas)
+[示例代码](https://github.com/microsoft/nni/tree/v1.9/examples/nas/enas)
 
 ```bash
 ＃如果未克隆 NNI 代码。 如果代码已被克隆，请忽略此行并直接进入代码目录。
@@ -34,9 +34,9 @@ python3 search.py -h
 ### PyTorch
 
 ```eval_rst
-..  autoclass:: nni.nas.pytorch.enas.EnasTrainer
+..  autoclass:: nni.algorithms.nas.pytorch.enas.EnasTrainer
     :members:
 
-..  autoclass:: nni.nas.pytorch.enas.EnasMutator
+..  autoclass:: nni.algorithms.nas.pytorch.enas.EnasMutator
     :members:
 ```

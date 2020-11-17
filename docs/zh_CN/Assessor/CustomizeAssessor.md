@@ -58,5 +58,5 @@ Assessor 的工作目录是`<home>/nni-experiments/<experiment_id>/log` 可从�
 
 更多示例，可参考：
 
-> * [medianstop-assessor](https://github.com/Microsoft/nni/tree/master/src/sdk/pynni/nni/medianstop_assessor)
-> * [curvefitting-assessor](https://github.com/Microsoft/nni/tree/master/src/sdk/pynni/nni/curvefitting_assessor)
+> * [medianstop-assessor](https://github.com/Microsoft/nni/tree/v1.9/src/sdk/pynni/nni/medianstop_assessor)
+> * [curvefitting-assessor](https://github.com/Microsoft/nni/tree/v1.9/src/sdk/pynni/nni/curvefitting_assessor)

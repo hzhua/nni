@@ -51,11 +51,11 @@
 
 ## 文档
 
-文档使用了 [sphinx](http://sphinx-doc.org/) 来生成，支持 [Markdown](https://guides.github.com/features/mastering-markdown/) 和 [reStructuredText](http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html) 格式。 所有文档都在 [docs/zh_CN](docs) 目录下。
+文档使用了 [sphinx](http://sphinx-doc.org/) 来生成，支持 [Markdown](https://guides.github.com/features/mastering-markdown/) 和 [reStructuredText](http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html) 格式。 All our documentations are placed under [docs/en_US](https://github.com/Microsoft/nni/tree/v1.9/docs).
 
 * 在提交文档改动前，请先**在本地生成文档**：`cd docs/zh_CN && make html`，然后，可以在 `docs/zh_CN/_build/html` 目录下找到所有生成的网页。 请认真分析生成日志中的**每个 WARNING**，这非常有可能是或**空连接**或其它问题。
 
 * 需要链接时，尽量使用**相对路径**。 但如果文档是 Markdown 格式的，并且：
     
     * 图片需要通过嵌入的 HTML 语法来格式化，则需要使用绝对链接，如 `https://user-images.githubusercontent.com/44491713/51381727-e3d0f780-1b4f-11e9-96ab-d26b9198ba65.png`。可以通过将图片拖拽到 [Github Issue](https://github.com/Microsoft/nni/issues/new) 框中来生成这样的链接。
-    * 如果不能被 sphinx 重新格式化，如源代码等，则需要使用绝对链接。 如果源码连接到本代码库，使用 `https://github.com/Microsoft/nni/tree/master/` 作为根目录 (例如：[mnist.py](https://github.com/Microsoft/nni/blob/master/examples/trials/mnist-tfv1/mnist.py))。
+    * 如果不能被 sphinx 重新格式化，如源代码等，则需要使用绝对链接。 For source code that links to our github repo, please use URLs rooted at `https://github.com/Microsoft/nni/tree/v1.9/` ([mnist.py](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/mnist-tfv1/mnist.py) for example).

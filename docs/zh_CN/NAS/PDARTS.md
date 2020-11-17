@@ -2,7 +2,7 @@
 
 ## 示例
 
-[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/pdarts)
+[示例代码](https://github.com/microsoft/nni/tree/v1.9/examples/nas/pdarts)
 
 ```bash
 ＃如果未克隆 NNI 代码。 如果代码已被克隆，请忽略此行并直接进入代码目录。

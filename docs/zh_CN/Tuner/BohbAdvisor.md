@@ -92,7 +92,7 @@ Advisor 有大量的文件、函数和类。 这里只简单介绍最重要的�
 
 ### BOHB 在 MNIST 数据集上的表现
 
-源码地址： [examples/trials/mnist-advisor](https://github.com/Microsoft/nni/tree/master/examples/trials/)
+code implementation: [examples/trials/mnist-advisor](https://github.com/Microsoft/nni/tree/v1.9/examples/trials/)
 
 使用 BOHB 调参算法，在 CNN 模型上跑 MNIST 数据集。 下面是实验结果：
 

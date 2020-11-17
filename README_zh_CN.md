@@ -19,7 +19,7 @@ NNI 管理自动机器学习 (AutoML) 的 Experiment，**调度运行**由调优
 * 想要更容易**实现或试验新的自动机器学习算法**的研究员或数据科学家，包括：超参调优算法，神经网络搜索算法以及模型压缩算法。
 * 在机器学习平台中**支持自动机器学习**。
 
-### **[NNI v1.8 已发布！](https://github.com/microsoft/nni/releases) &nbsp;[<img width="48" src="docs/img/release_icon.png" />](#nni-released-reminder)**
+### **[NNI v1.9 has been released!](https://github.com/microsoft/nni/releases) &nbsp;[<img width="48" src="docs/img/release_icon.png" />](#nni-released-reminder)**
 
 ## **NNI 功能一览**
 
@@ -240,7 +240,7 @@ Linux 和 macOS 下 NNI 系统需求[参考这里](https://nni.readthedocs.io/zh
 * 通过克隆源代码下载示例。
    
    ```bash
-   git clone -b v1.8 https://github.com/Microsoft/nni.git
+   git clone -b v1.9 https://github.com/Microsoft/nni.git
    ```
 
 * 运行 MNIST 示例。
@@ -289,8 +289,8 @@ You can use these commands to get more information about the experiment
 * 在浏览器中打开 `Web UI url`，可看到下图的 Experiment 详细信息，以及所有的 Trial 任务。 查看[这里](docs/zh_CN/Tutorial/WebUI.md)的更多页面。
 
 <table style="border: none">
-    <th><img src="./docs/img/webui_overview_page.png" alt="drawing" width="395"/></th>
-    <th><img src="./docs/img/webui_trialdetail_page.png" alt="drawing" width="410"/></th>
+    <th><img src="./docs/img/webui-img/full-oview.png" alt="drawing" width="395" height="300"/></th>
+    <th><img src="./docs/img/webui-img/full-detail.png" alt="drawing" width="410" height="300"/></th>
 </table>
 
 ## **文档**

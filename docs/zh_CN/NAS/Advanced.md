@@ -76,9 +76,9 @@ class RandomMutator(Mutator):
         return self.sample_search()  # 使用同样的逻辑 其它操作
 ```
 
-随机 Mutator 的完整示例在[这里](https://github.com/microsoft/nni/blob/master/src/sdk/pynni/nni/nas/pytorch/random/mutator.py)。
+The complete example of random mutator can be found [here](https://github.com/microsoft/nni/blob/v1.9/src/sdk/pynni/nni/nas/pytorch/random/mutator.py).
 
-对于高级用法，例如，需要在 `LayerChoice` 执行的时候操作模型，可继承 `BaseMutator`，并重载 `on_forward_layer_choice` 和`on_forward_input_choice`。这些是 `LayerChoice` 和 `InputChoice` 对应的回调实现。 还可使用属性 `mutables` 来获得模型中所有的 `LayerChoice` 和 `InputChoice`。 详细信息，[参考这里](https://github.com/microsoft/nni/tree/master/src/sdk/pynni/nni/nas/pytorch)。
+对于高级用法，例如，需要在 `LayerChoice` 执行的时候操作模型，可继承 `BaseMutator`，并重载 `on_forward_layer_choice` 和`on_forward_input_choice`。这些是 `LayerChoice` 和 `InputChoice` 对应的回调实现。 还可使用属性 `mutables` 来获得模型中所有的 `LayerChoice` 和 `InputChoice`。 For details, please refer to [reference](https://github.com/microsoft/nni/tree/v1.9/src/sdk/pynni/nni/nas/pytorch) here to learn more.
 
 ```eval_rst
 .. tip::

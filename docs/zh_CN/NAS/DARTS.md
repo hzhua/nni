@@ -15,13 +15,13 @@ NNI 的实现基于[官方实现](https://github.com/quark0/darts)以及一个[�
 |             | 论文中           | 重现   |
 | ----------- | ------------- | ---- |
 | 一阶（CIFAR10） | 3.00 +/- 0.14 | 2.78 |
-| 二阶（CIFAR10） | 2.76 +/- 0.09 | 2.89 |
+| 二阶（CIFAR10） | 2.76 +/- 0.09 | 2.80 |
 
 ## 示例
 
 ### CNN 搜索空间
 
-[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/darts)
+[示例代码](https://github.com/microsoft/nni/tree/v1.9/examples/nas/darts)
 
 ```bash
 ＃如果未克隆 NNI 代码。 如果代码已被克隆，请忽略此行并直接进入代码目录。
@@ -40,10 +40,10 @@ python3 retrain.py --arc-checkpoint ./checkpoints/epoch_49.json
 ### PyTorch
 
 ```eval_rst
-..  autoclass:: nni.nas.pytorch.darts.DartsTrainer
+..  autoclass:: nni.algorithms.nas.pytorch.darts.DartsTrainer
     :members:
 
-..  autoclass:: nni.nas.pytorch.darts.DartsMutator
+..  autoclass:: nni.algorithms.nas.pytorch.darts.DartsMutator
     :members:
 ```
 

@@ -25,7 +25,7 @@
 git clone -b ${NNI_VERSION} https://github.com/microsoft/nni
 cd nni/examples/nas/benchmarks
 ```
-将 `${NNI_VERSION}` 替换为发布的版本或分支名称，例如：`v1.8`。
+Replace `${NNI_VERSION}` with a released version name or branch name, e.g., `v1.9`.
 
 2. 通过 `pip3 install -r xxx.requirements.txt` 安装依赖。 `xxx` 可以为 `nasbench101`, `nasbench201` 或 `nds`.
 3. 通过 `./xxx.sh`生成数据库。 存储数据库的目录可以通过环境变量 `NASBENCHMARK_DIR` 设置，默认为 `~/.nni/nasbenchmark`。 注意 NAS-Bench-201 数据库将从 google drive 被下载。

@@ -6,7 +6,7 @@
 
 ## 说明
 
-[示例代码](https://github.com/microsoft/nni/tree/master/examples/trials/efficientnet)
+[示例代码](https://github.com/microsoft/nni/tree/v1.9/examples/trials/efficientnet)
 
 1. 将示例代码目录设为当前工作目录。
 2. 运行 `git clone https://github.com/ultmaster/EfficientNet-PyTorch` 来克隆修改过的 [EfficientNet-PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch)。 修改尽可能接近原始的 [TensorFlow 版本](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet) （包括 EMA，标记平滑度等等。）；另外添加了代码从 Tuner 获取参数并回调中间和最终结果。 将其 clone 至 `EfficientNet-PyTorch`；`main.py`，`train_imagenet.sh` 等文件会在配置文件中指定的路径。

@@ -10,7 +10,7 @@
 
 此示例是论文中的搜索空间，使用 flops 限制来执行统一的采样方法。
 
-[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/spos)
+[示例代码](https://github.com/microsoft/nni/tree/v1.9/examples/nas/spos)
 
 ### 必需组件
 
@@ -89,13 +89,13 @@ python scratch.py
 ### PyTorch
 
 ```eval_rst
-..  autoclass:: nni.nas.pytorch.spos.SPOSEvolution
+..  autoclass:: nni.algorithms.nas.pytorch.spos.SPOSEvolution
     :members:
 
-..  autoclass:: nni.nas.pytorch.spos.SPOSSupernetTrainer
+..  autoclass:: nni.algorithms.nas.pytorch.spos.SPOSSupernetTrainer
     :members:
 
-..  autoclass:: nni.nas.pytorch.spos.SPOSSupernetTrainingMutator
+..  autoclass:: nni.algorithms.nas.pytorch.spos.SPOSSupernetTrainingMutator
     :members:
 ```
 

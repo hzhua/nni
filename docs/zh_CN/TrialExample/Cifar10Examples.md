@@ -39,7 +39,7 @@ python3 -m pip install torchvision
 }
 ```
 
-*实现代码：[search_space.json](https://github.com/Microsoft/nni/blob/master/examples/trials/cifar10_pytorch/search_space.json)*
+*Implemented code directory: [search_space.json](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/cifar10_pytorch/search_space.json)*
 
 **Trial（尝试）**
 
@@ -49,7 +49,7 @@ python3 -m pip install torchvision
 * 使用 `nni.report_intermediate_result(acc)` 在每个 epoch 结束时返回中间结果。
 * 使用 `nni.report_final_result(acc)` 在每个 Trial 结束时返回最终结果。
 
-*实现代码：[main.py](https://github.com/Microsoft/nni/blob/master/examples/trials/cifar10_pytorch/main.py)*
+*Implemented code directory: [main.py](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/cifar10_pytorch/main.py)*
 
 还可直接修改现有的代码来支持 Nni，参考：[如何实现 Trial](Trials.md)。
 
@@ -57,13 +57,13 @@ python3 -m pip install torchvision
 
 这是在本机运行 Experiment 的示例（多GPU）：
 
-代码：[examples/trials/cifar10_pytorch/config.yml](https://github.com/Microsoft/nni/blob/master/examples/trials/cifar10_pytorch/config.yml)
+code directory: [examples/trials/cifar10_pytorch/config.yml](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/cifar10_pytorch/config.yml)
 
 这是在 OpenPAI 上运行 Experiment 的示例：
 
-代码：[examples/trials/cifar10_pytorch/config_pai.yml](https://github.com/Microsoft/nni/blob/master/examples/trials/cifar10_pytorch/config_pai.yml)
+code directory: [examples/trials/cifar10_pytorch/config_pai.yml](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/cifar10_pytorch/config_pai.yml)
 
-*完整示例：[examples/trials/cifar10_pytorch/](https://github.com/Microsoft/nni/tree/master/examples/trials/cifar10_pytorch)*
+*The complete examples we have implemented: [examples/trials/cifar10_pytorch/](https://github.com/Microsoft/nni/tree/v1.9/examples/trials/cifar10_pytorch)*
 
 #### 运行 Experiment
 

@@ -44,7 +44,7 @@ GBDT 有很多超参，但哪些才会影响性能或计算速度呢？ 基于�
 
 ## 2. 任务描述
 
-"auto-gbdt" 基于 LightGBM 和 NNI。 数据集有[训练数据](https://github.com/Microsoft/nni/blob/master/examples/trials/auto-gbdt/data/regression.train)和[测试数据](https://github.com/Microsoft/nni/blob/master/examples/trials/auto-gbdt/data/regression.train)。 根据数据中的特征和标签，训练一个 GBDT 回归模型，用来做预测。
+"auto-gbdt" 基于 LightGBM 和 NNI。 The data including [train data](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/auto-gbdt/data/regression.train) and [test data](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/auto-gbdt/data/regression.train). 根据数据中的特征和标签，训练一个 GBDT 回归模型，用来做预测。
 
 ## 3. 如何运行 NNI
 
@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
 ### 3.3 准备搜索空间
 
-如果要调优 `num_leaves`, `learning_rate`, `bagging_fraction` 和 `bagging_freq`, 可创建一个 [search_space.json](https://github.com/Microsoft/nni/blob/master/examples/trials/auto-gbdt/search_space.json) 文件：
+If you like to tune `num_leaves`, `learning_rate`, `bagging_fraction` and `bagging_freq`, you could write a [search_space.json](https://github.com/Microsoft/nni/blob/v1.9/examples/trials/auto-gbdt/search_space.json) as follow:
 
 ```json
 {

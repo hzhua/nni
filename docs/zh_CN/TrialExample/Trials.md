@@ -146,7 +146,7 @@ nni.get_trial_id＃返回 "STANDALONE"
 nni.get_sequence_id＃返回 0
 ```
 
-可使用 [mnist 示例](https://github.com/microsoft/nni/tree/master/examples/trials/mnist-tfv1) 来尝试独立模式。 只需在代码目录下运行 `python3 mnist.py`。 Trial 代码会使用默认超参成功运行。
+You can try standalone mode with the [mnist example](https://github.com/microsoft/nni/tree/v1.9/examples/trials/mnist-tfv1). 只需在代码目录下运行 `python3 mnist.py`。 Trial 代码会使用默认超参成功运行。
 
 更多调试的信息，可参考[调试指南](../Tutorial/HowToDebug.md)。
 

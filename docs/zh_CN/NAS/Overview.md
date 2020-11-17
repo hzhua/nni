@@ -20,10 +20,10 @@ NNI 还提供了专门的[可视化工具](#nas-可视化)，用于查看神经�
 
 经典 NAS 算法的过程类似于超参调优，通过 `nnictl` 来启动 Experiment，每个子模型会作为 Trial 运行。 不同之处在于，搜索空间文件是通过运行 `nnictl ss_gen`，从用户模型（已包含搜索空间）中自动生成。 下表列出了经典 NAS 模式支持的算法。 将来版本会支持更多算法。
 
-| 名称                                                                                                   | 算法简介                                                                      |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [Random Search（随机搜索）](https://github.com/microsoft/nni/tree/master/examples/tuners/random_nas_tuner) | 从搜索空间中随机选择模型                                                              |
-| [PPO Tuner](https://nni.readthedocs.io/zh/latest/Tuner/BuiltinTuner.html#PPOTuner)                   | PPO Tuner 是基于 PPO 算法的强化学习 Tuner。 [参考论文](https://arxiv.org/abs/1707.06347) |
+| 名称                                                                                                 | 算法简介                                                                      |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [Random Search（随机搜索）](https://github.com/microsoft/nni/tree/v1.9/examples/tuners/random_nas_tuner) | 从搜索空间中随机选择模型                                                              |
+| [PPO Tuner](https://nni.readthedocs.io/zh/latest/Tuner/BuiltinTuner.html#PPOTuner)                 | PPO Tuner 是基于 PPO 算法的强化学习 Tuner。 [参考论文](https://arxiv.org/abs/1707.06347) |
 
 参考[这里](ClassicNas.md)，了解如何使用经典 NAS 算法。
 
@@ -64,6 +64,7 @@ NNI 提供了一些预定义的、可被重用的搜索空间。 通过堆叠这
 * [DartsCell](./SearchSpaceZoo.md#DartsCell)
 * [ENAS micro](./SearchSpaceZoo.md#ENASMicroLayer)
 * [ENAS macro](./SearchSpaceZoo.md#ENASMacroLayer)
+* [NAS Bench 201](./SearchSpaceZoo.md#nas-bench-201)
 
 ## 使用 NNI API 来编写搜索空间
 

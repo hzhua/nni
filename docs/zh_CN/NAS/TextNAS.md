@@ -45,7 +45,7 @@ textnas
 
 ### 搜索空间
 
-[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/textnas)
+[示例代码](https://github.com/microsoft/nni/tree/v1.9/examples/nas/textnas)
 
 ```bash
 ＃如果未克隆 NNI 代码。 如果代码已被克隆，请忽略此行并直接进入代码目录。

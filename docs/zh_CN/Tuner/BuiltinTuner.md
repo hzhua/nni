@@ -245,6 +245,7 @@ tuner:
 * **optimize_mode** (*maximize 或 minimize, 可选项, 默认值为 maximize*) - 如果为 'maximize'，表示 Tuner 会试着最大化指标。 如果为 'minimize'，表示 Tuner 的目标是将指标最小化。
 * **R** (*int, 可选, 默认为 60*) - 分配给 Trial 的最大资源（可以是 mini-batches 或 epochs 的数值）。 每个 Trial 都需要用 TRIAL_BUDGET 来控制运行的步数。
 * **eta** (*int, 可选, 默认为 3*) - `(eta-1)/eta` 是丢弃 Trial 的比例。
+* **exec_mode** (*serial or parallelism, optional, default = parallelism*) - If 'parallelism', the tuner will try to use available resources to start new bucket immediately. If 'serial', the tuner will only start new bucket after the current bucket is done.
 
 **配置示例：**
 
@@ -268,11 +269,11 @@ advisor:
 
 **安装**
 
-NetworkMorphism 需要先安装 [PyTorch](https://pytorch.org/get-started/locally) 和 [Keras](https://keras.io/#installation) 才能使用。 对应的 requirements 文件在[这里](https://github.com/microsoft/nni/blob/master/examples/trials/network_morphism/requirements.txt)。
+NetworkMorphism 需要先安装 [PyTorch](https://pytorch.org/get-started/locally) 和 [Keras](https://keras.io/#installation) 才能使用。 The corresponding requirements file is [here](https://github.com/microsoft/nni/blob/v1.9/examples/trials/network_morphism/requirements.txt).
 
 **建议场景**
 
-需要将深度学习方法应用到自己的任务上，但不清楚该如何选择或设计网络。 可修改[示例](https://github.com/Microsoft/nni/tree/master/examples/trials/network_morphism/cifar10/cifar10_keras.py)来适配自己的数据集和数据增强方法。 也可以修改批处理大小，学习率或优化器。 当前，此 Tuner 仅支持视觉领域。 [详细说明](./NetworkmorphismTuner.md)
+需要将深度学习方法应用到自己的任务上，但不清楚该如何选择或设计网络。 You may modify this [example](https://github.com/Microsoft/nni/tree/v1.9/examples/trials/network_morphism/cifar10/cifar10_keras.py) to fit your own dataset and your own data augmentation method. 也可以修改批处理大小，学习率或优化器。 当前，此 Tuner 仅支持视觉领域。 [详细说明](./NetworkmorphismTuner.md)
 
 **classArgs 要求：**
 
@@ -308,7 +309,7 @@ tuner:
 
 **建议场景**
 
-与 TPE 和 SMAC 类似，Metis 是黑盒 Tuner。 如果系统需要很长时间才能完成一次 Trial，Metis 就比随机搜索等其它方法要更合适。 此外，Metis 还为接下来的 Trial 提供了候选。 如何使用 Metis 的[样例](https://github.com/Microsoft/nni/tree/master/examples/trials/auto-gbdt/search_space_metis.json)。 通过调用 NNI 的 SDK，用户只需要发送 `精度` 这样的最终结果给 Tuner。 [详细说明](./MetisTuner.md)
+与 TPE 和 SMAC 类似，Metis 是黑盒 Tuner。 如果系统需要很长时间才能完成一次 Trial，Metis 就比随机搜索等其它方法要更合适。 此外，Metis 还为接下来的 Trial 提供了候选。 Here is an [example](https://github.com/Microsoft/nni/tree/v1.9/examples/trials/auto-gbdt/search_space_metis.json) on the use of Metis. 通过调用 NNI 的 SDK，用户只需要发送 `精度` 这样的最终结果给 Tuner。 [详细说明](./MetisTuner.md)
 
 **classArgs 要求：**
 
@@ -423,7 +424,7 @@ tuner:
 
 **建议场景**
 
-PPO Tuner 是基于 PPO 算法的强化学习 Tuner。 PPOTuner 可用于使用 NNI NAS 接口进行的神经网络结构搜索。 一般来说，尽管 PPO 算法比其它强化学习算法效率更高，但强化学习算法需要更多的计算资源。 当有大量可用的计算资源时，才建议使用此 Tuner。 可以在简单的任务上尝试，如 [mnist-nas](https://github.com/microsoft/nni/tree/master/examples/trials/mnist-nas) 示例。 [查看详细信息](./PPOTuner.md)
+PPO Tuner 是基于 PPO 算法的强化学习 Tuner。 PPOTuner 可用于使用 NNI NAS 接口进行的神经网络结构搜索。 一般来说，尽管 PPO 算法比其它强化学习算法效率更高，但强化学习算法需要更多的计算资源。 当有大量可用的计算资源时，才建议使用此 Tuner。 You could try it on a very simple task, such as the [mnist-nas](https://github.com/microsoft/nni/tree/v1.9/examples/trials/mnist-nas) example. [查看详细信息](./PPOTuner.md)
 
 **classArgs 要求：**
 
@@ -483,6 +484,6 @@ tuner:
 
 * 在 GitHub 中[提交此功能的 Bug](https://github.com/microsoft/nni/issues/new?template=bug-report.md)；
 * 在 GitHub 中[提交新功能或改进请求](https://github.com/microsoft/nni/issues/new?template=enhancement.md)；
-* 了解 NNI 中[特征工程的更多信息](https://github.com/microsoft/nni/blob/master/docs/zh_CN/FeatureEngineering/Overview.md)；
-* 了解 NNI 中[ NAS 的更多信息](https://github.com/microsoft/nni/blob/master/docs/zh_CN/NAS/Overview.md)；
-* 了解 NNI 中[模型自动压缩的更多信息](https://github.com/microsoft/nni/blob/master/docs/zh_CN/Compressor/Overview.md)；
+* To know more about [Feature Engineering with NNI](https://github.com/microsoft/nni/blob/v1.9/docs/en_US/FeatureEngineering/Overview.md);
+* To know more about [NAS with NNI](https://github.com/microsoft/nni/blob/v1.9/docs/en_US/NAS/Overview.md);
+* To know more about [Model Compression with NNI](https://github.com/microsoft/nni/blob/v1.9/docs/en_US/Compression/Overview.md);

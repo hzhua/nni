@@ -12,7 +12,7 @@ NNI 提供的训练平台包括：[本机](./LocalMode.md), [远程计算机](./
 
 在 Experiment 的 YAML 配置文件中选择并配置好训练平台。 参考相应训练平台的文档来了解如何配置。 同时，[Experiment 文档](../Tutorial/ExperimentConfig)提供了更多详细信息。
 
-然后，需要准备代码目录，将路径填入配置文件的 `codeDir` 字段。 注意，非本机模式下，代码目录会在 Experiment 运行前上传到远程或集群中。 因此，NNI 将文件数量限制到 2000，总大小限制为 300 MB。 如果代码目录中文件太多，可添加 `.nniignore` 文件来排除一部分文件，其用法与 `.gitignore` 类似。 关于如何编写该文件，详见 [此示例](https://github.com/Microsoft/nni/tree/master/examples/trials/mnist-tfv1/.nniignore) 以及 [git 文档](https://git-scm.com/docs/gitignore#_pattern_format).
+然后，需要准备代码目录，将路径填入配置文件的 `codeDir` 字段。 注意，非本机模式下，代码目录会在 Experiment 运行前上传到远程或集群中。 因此，NNI 将文件数量限制到 2000，总大小限制为 300 MB。 如果代码目录中文件太多，可添加 `.nniignore` 文件来排除一部分文件，其用法与 `.gitignore` 类似。 For more details on how to write this file, see [this example](https://github.com/Microsoft/nni/tree/v1.9/examples/trials/mnist-tfv1/.nniignore) and the [git documentation](https://git-scm.com/docs/gitignore#_pattern_format).
 
 如果用户需要在 Experiment 使用大文件（如，大规模的数据集），并且不想使用本机模式，可以：1) 在 Trial command 字段中添加命令，每次 Trial 运行前下载数据；或 2) 使用工作节点可访问的共享存储。 通常情况下，训练平台都会有共享存储。 参考每个训练平台的文档，了解详情。
 

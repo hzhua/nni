@@ -8,33 +8,45 @@
 
 首先，此示例是基于 MsgDispatcherBase 来实现的自动机器学习算法，而不是基于 Tuner 和 Assessor。 这种实现方法下，Hyperband 集成了 Tuner 和 Assessor 两者的功能，因而将它叫做 Advisor。
 
-其次，本实现完全利用了 Hyperband 内部的并行性。 具体来说，下一个分组不会严格的在当前分组结束后再运行。 只要有资源，就可以开始运行新的分组。
+其次，本实现完全利用了 Hyperband 内部的并行性。 具体来说，下一个分组不会严格的在当前分组结束后再运行。 只要有资源，就可以开始运行新的分组。 If you want to use full parallelism mode, set `exec_mode` with `parallelism`.
+
+Or if you want to set `exec_mode` with `serial` according to the original algorithm. In this mode, the next bucket will start strictly after the current bucket.
+
+`parallelism` mode may lead to multiple unfinished buckets, and there is at most one unfinished bucket under `serial` mode. The advantage of `parallelism` mode is to make full use of resources, which may reduce the experiment duration multiple times. The following two pictures are the results of quick verification using [nas-bench-201](../NAS/Benchmarks.md), picture above is in `parallelism` mode, picture below is in `serial` mode.
+
+![parallelism mode](../../img/hyperband_parallelism.png "parallelism mode")
+
+![serial mode](../../img/hyperband_serial.png "serial mode")
+
+If you want to reproduce these results, refer to the example under `examples/trials/benchmarking/` for details.
 
 ## 3. 用法
 
-要使用 Hyperband，需要在 Experiment 的 YAML 配置文件进行如下改动。
+To use Hyperband, you should add the following spec in your experiment's YAML config file:
 
     advisor:
-      #可选项: Hyperband
+      #choice: Hyperband
       builtinAdvisorName: Hyperband
       classArgs:
-        #R: 最大的步骤
+        #R: the maximum trial budget
         R: 100
-        #eta: 丢弃的 Trial 的比例
+        #eta: proportion of discarded trials
         eta: 3
-        #可选项: maximize, minimize
+        #choice: maximize, minimize
         optimize_mode: maximize
+        #choice: serial, parallelism
+        exec_mode: parallelism
     
 
-注意，一旦使用了 Advisor，就不能在配置文件中添加 Tuner 和 Assessor。 使用 Hyperband 时，Trial 代码收到的超参（如键值对）中，会多一个用户定义的 `TRIAL_BUDGET`。 **使用 `TRIAL_BUDGET`，Trial 能够控制其运行的时间。</p> 
+Note that once you use Advisor, you are not allowed to add a Tuner and Assessor spec in the config file. If you use Hyperband, among the hyperparameters (i.e., key-value pairs) received by a trial, there will be one more key called `TRIAL_BUDGET` defined by user. **By using this `TRIAL_BUDGET`, the trial can control how long it runs**.
 
-对于 Trial 代码中 `report_intermediate_result(metric)` 和 `report_final_result(metric)` 的**`指标` 应该是数值，或者用一个 dict，并保证其中有键值为 default 的项目，其值也为数值型**。 这是需要进行最大化或者最小化优化的数值，如精度或者损失度。
+For `report_intermediate_result(metric)` and `report_final_result(metric)` in your trial code, **`metric` should be either a number or a dict which has a key `default` with a number as its value**. This number is the one you want to maximize or minimize, for example, accuracy or loss.
 
-`R` 和 `eta` 是 Hyperband 中可以改动的参数。 `R` 表示可以分配给 Trial 的最大资源。 这里，资源可以代表 epoch 或 批处理数量。 `TRIAL_BUDGET` 应该被尝试代码用来控制运行的次数。 参考示例 `examples/trials/mnist-advisor/` ，了解详细信息。
+`R` and `eta` are the parameters of Hyperband that you can change. `R` means the maximum trial budget that can be allocated to a configuration. Here, trial budget could mean the number of epochs or mini-batches. This `TRIAL_BUDGET` should be used by the trial to control how long it runs. Refer to the example under `examples/trials/mnist-advisor/` for details.
 
-`eta` 表示 `n` 个配置中的 `n/eta` 个配置会留存下来，并用更多的资源来运行。
+`eta` means `n/eta` configurations from `n` configurations will survive and rerun using more budgets.
 
-下面是 `R=81` 且 `eta=3` 时的示例：
+Here is a concrete example of `R=81` and `eta=3`:
 
 |   | s=4  | s=3  | s=2  | s=1  | s=0  |
 | - | ---- | ---- | ---- | ---- | ---- |
@@ -45,12 +57,12 @@
 | 3 | 3 27 | 1 81 |      |      |      |
 | 4 | 1 81 |      |      |      |      |
 
-`s` 表示分组， `n` 表示生成的配置数量，相应的 `r` 表示配置使用多少资源来运行。 `i` 表示轮数，如分组 4 有 5 轮，分组 3 有 4 轮。
+`s` means bucket, `n` means the number of configurations that are generated, the corresponding `r` means how many budgets these configurations run. `i` means round, for example, bucket 4 has 5 rounds, bucket 3 has 4 rounds.
 
-关于如何实现 Trial 代码，参考 `examples/trials/mnist-hyperband/` 中的说明。
+For information about writing trial code, please refer to the instructions under `examples/trials/mnist-hyperband/`.
 
 ## 4. 未来的改进
 
-当前实现的 Hyperband 算法可以通过改进支持的提前终止算法来提高，因为最好的 `n/eta` 个配置并不一定都表现很好。 不好的配置应该更早的终止。
+The current implementation of Hyperband can be further improved by supporting a simple early stop algorithm since it's possible that not all the configurations in the top `n/eta` perform well. Any unpromising configurations should be stopped early.
 
-在当前实现中，遵循了[此论文](https://arxiv.org/pdf/1603.06560.pdf)的设计，配置都是随机生成的。 要进一步提升，配置生成过程可以利用更高级的算法。
+In the current implementation, configurations are generated randomly which follows the design in the [paper](https://arxiv.org/pdf/1603.06560.pdf). As an improvement, configurations could be generated more wisely by leveraging advanced algorithms.

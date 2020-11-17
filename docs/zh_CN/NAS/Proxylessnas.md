@@ -19,7 +19,7 @@ trainer = ProxylessNasTrainer(model,
 trainer.train()
 trainer.export(args.arch_path)
 ```
-[此处](https://github.com/microsoft/nni/tree/master/examples/nas/proxylessnas)是完整示例。
+The complete example code can be found [here](https://github.com/microsoft/nni/tree/v1.9/examples/nas/proxylessnas).
 
 **ProxylessNasTrainer 的输入参数**
 
@@ -50,7 +50,7 @@ trainer.export(args.arch_path)
 
 NNI 上的实现基于[官方实现](https://github.com/mit-han-lab/ProxylessNAS)。 官方实现支持两种搜索方法：梯度下降和强化学习，还支持不同的硬件，包括 'mobile', 'cpu', 'gpu8', 'flops'。 在当前的 NNI 实现中，支持梯度下降训练方法，不支持不同的硬件。 完整支持正在进行中。
 
-下面将介绍实现的细节。 像 NNI 上其它 one-shot NAS 算法一样，ProxylessNAS 由两部分组成：*搜索空间* 和 *训练方法*。 为了用户能灵活的定义自己的搜索空间，并使用内置的 ProxylessNAS 训练方法，将使用 [NNI NAS 接口](NasGuide.md)定制的搜索空间放在了[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/proxylessnas)中，并将搜索方法放在了 [SDK](https://github.com/microsoft/nni/tree/master/src/sdk/pynni/nni/nas/pytorch/proxylessnas) 中。
+下面将介绍实现的细节。 像 NNI 上其它 one-shot NAS 算法一样，ProxylessNAS 由两部分组成：*搜索空间* 和 *训练方法*。 For users to flexibly define their own search space and use built-in ProxylessNAS training approach, we put the specified search space in [example code](https://github.com/microsoft/nni/tree/v1.9/examples/nas/proxylessnas) using [NNI NAS interface](NasGuide.md), and put the training approach in [SDK](https://github.com/microsoft/nni/tree/v1.9/src/sdk/pynni/nni/nas/pytorch/proxylessnas).
 
 ![](../../img/proxylessnas.png)
 

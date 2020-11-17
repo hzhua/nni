@@ -1,15 +1,13 @@
-## 安装
+## Install
 
-为当前用户安装：
+Install for current user:
 
     pip install --user -e .
-    
 
-为所有用户安装:
+Install for all users:
 
     pip install -e .
-    
 
-## 测试
+## Test
 
     python setup.py test

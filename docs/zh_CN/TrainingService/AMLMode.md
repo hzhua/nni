@@ -60,7 +60,11 @@ amlConfig:
 
 与[本机模式](LocalMode.md)的 Trial 配置相比，aml 模式下的键值还有：
 * image
-    * 必填。 作业中使用的 Docker 映像名称。 此示例中的镜像 `msranni/nni` 只支持 GPU 计算集群。
+    * required key. The docker image name used in job. NNI support image `msranni/nni` for running aml jobs.
+    ```
+    Note: This image is build based on cuda environment, may not be suitable for CPU clusters in AML.
+    ```
+
 
 amlConfig:
 * subscriptionId
@@ -70,11 +74,11 @@ amlConfig:
 * workspaceName
     * 必填，Azure 订阅的工作空间
 * computeTarget
-    * 必填，要在 AML 工作区中使用的计算机集群名称。 见步骤6。
+    * 必填，要在 AML 工作区中使用的计算机集群名称。 [refer](https://docs.microsoft.com/en-us/azure/machine-learning/concept-compute-target) See Step 6.
 * maxTrialNumPerGpu
-    * 可选，用于指定 GPU 设备上的最大并发 Trial 的数量。
+    * optional key, default 1. Used to specify the max concurrency trial number on a GPU device.
 * useActiveGpu
-    * 可选，用于指定 GPU 上存在其他进程时是否使用此 GPU。 默认情况下，NNI 仅在 GPU 中没有其他活动进程时才使用 GPU。
+    * optional key, default false. Used to specify whether to use a GPU if there is another process. By default, NNI will use the GPU only if there is no other active process in the GPU.
 
 amlConfig 需要的信息可以从步骤 5 下载的 `config.json` 找到。
 
@@ -87,4 +91,4 @@ cd nni/examples/trials/mnist-tfv1
 
 nnictl create --config config_aml.yml
 ```
-将 `${NNI_VERSION}` 替换为发布的版本或分支名称，例如：`v1.8`。
+Replace `${NNI_VERSION}` with a released version name or branch name, e.g., `v1.9`.

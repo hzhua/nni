@@ -95,21 +95,21 @@ experimentName: example_ga_squad
 trialConcurrency: 1
 maxExecDuration: 1h
 maxTrialNum: 10
-#可选项: local, remote, pai
+#choice: local, remote, pai
 trainingServicePlatform: pai
-#可选项: true, false
+#choice: true, false
 useAnnotation: false
-# nni_manager 的 ip
+#Your nni_manager ip
 nniManagerIp: 10.10.10.10
 tuner:
-  codeDir: ../../tuners/ga_customer_tuner
+  codeDir: https://github.com/Microsoft/nni/tree/v1.9/examples/tuners/ga_customer_tuner
   classFileName: customer_tuner.py
   className: CustomerTuner
   classArgs:
     optimize_mode: maximize
 trial:
   command: chmod +x ./download.sh && ./download.sh && python3 trial.py
-  codeDir: https://github.com/Microsoft/nni/tree/master/examples/tuners/ga_customer_tuner
+  codeDir: .
   gpuNum: 0
   cpuNum: 1
   memoryMB: 32869
